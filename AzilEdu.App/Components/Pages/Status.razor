@@ -1,0 +1,18 @@
+﻿@page "/status"
+@rendermode InteractiveServer
+
+
+<h3>Status</h3>
+
+<p>@poruka</p>
+
+<button @onclick="PromijeniPoruku">Promijeni poruku</button>
+
+@code {
+    string poruka = "Još nije kliknuto.";
+
+    void PromijeniPoruku()
+    {
+        poruka = "poruka promjenjena";
+    }
+}

@@ -1,0 +1,17 @@
+﻿@page "/brojac"
+@rendermode InteractiveServer
+
+
+<h3>Brojac</h3>
+
+<p>broj klikova: @counter</p>
+<button @onclick="PovecajBrojac">Povećaj brojač</button>
+
+@code {
+    int counter = 0;
+
+    void PovecajBrojac()
+    {
+        counter++;
+    }
+}

@@ -1,0 +1,38 @@
+﻿@page "/zivotinje"
+@rendermode InteractiveServer
+
+<h3>Zivotinje</h3>
+
+<label>
+    novo ime: <input @bind="novoIme" />
+</label>
+<button @onclick="DodajZivotinju">Dodaj zivotinju</button>
+
+<ul>
+    @foreach (string zivotinja in zivotinje)
+    {
+        <li>@zivotinja</li>
+    }
+</ul>
+
+@code {
+    string novoIme = "";
+
+    List<string> zivotinje = new()
+    {
+        "Luna",
+        "Max",
+        "Bela"
+    };
+
+
+    void DodajZivotinju()
+    {
+        if (!string.IsNullOrWhiteSpace(novoIme))
+        {
+            zivotinje.Add(novoIme);
+            novoIme = "";
+        }
+    }
+
+}
