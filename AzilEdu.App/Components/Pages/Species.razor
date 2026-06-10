@@ -2,33 +2,107 @@
 
 <MudText Typo="Typo.h4" GutterBottom="true">Species</MudText>
 
-<MudTable Items="_species">
-    <HeaderContent>
-        <MudTh>Id</MudTh>
-        <MudTh>Name</MudTh>
-        <MudTh>Description</MudTh>
-    </HeaderContent>
+<MudText Typo="Typo.body1">
+    Ovdje će se prikazivati evidencija vrsta životinja. Svaka vrsta može imati više pasmina, a životinje se organiziraju prema vrstama i pasminama radi lakše evidencije i pretraživanja. 
+    </MudText>
+<hr />
 
-    <RowTemplate>
-        <MudTd>@context.Id</MudTd>
-        <MudTd>@context.Name</MudTd>
-        <MudTd>@context.Description</MudTd>
-    </RowTemplate>
-</MudTable>
+<MudGrid>
+    <MudItem xs="12" sm="6" md="3">
+        <MudPaper Class="pa-4" Elevation="2" Style="height: 400px;">
+            <MudImage Src="images/dogs.jpg"
+                      Alt="Pas"
+                      Width="250"
+                      Class="mb-2" />
 
-@code {
-    private List<SpeciesItem> _species = new()
-  {
-      new SpeciesItem { Id = 1, Name = "Dog", Description = "Domaći pas" },
-      new SpeciesItem { Id = 2, Name = "Cat", Description = "Domaća mačka" },
-      new SpeciesItem { Id = 3, Name = "Rabbit", Description = "Kunić" }
-  };
 
-    private class SpeciesItem
-    {
-        public int Id { get; set; }
-        public string Name { get; set; } = "";
-        public string Description { get; set; } = "";
-    }
-}
+            <MudText Typo="Typo.h6">Dogs</MudText>
+            <MudText Typo="Typo.body2"><b>Latinski naziv:</b> Canis lupus familiaris</MudText>
+            <MudText Typo="Typo.body2"><b>Opis:</b> Društvene i odane životinje, najčešći stanovnici azila.</MudText>
+            <MudText Typo="Typo.body2"><b>Prosječan životni vijek:</b> 10 - 13 godina</MudText>
+            <MudText Typo="Typo.body2"><b>Prehrana:</b> Svežder</MudText>
+            <MudText Typo="Typo.body2"><b>Broj jedinki:</b> 18</MudText>
+           
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       Class="mt-3">
+                View Details
+            </MudButton>
+
+        </MudPaper>
+    </MudItem>
+
+    <MudItem xs="12" sm="6" md="3">
+        <MudPaper Class="pa-4" Elevation="2" Style="height: 400px;">
+            <MudImage Src="images/cat.jpg"
+                      Alt="Cats"
+                      Width="250"
+                      Class="mb-2" />
+
+            <MudText Typo="Typo.h6">Cats</MudText>
+            <MudText Typo="Typo.body2"><b>Latinski naziv:</b> Felis catus</MudText>
+            <MudText Typo="Typo.body2"><b>Opis:</b> Samostalne i znatiželjne životinje prilagođene životu uz ljude.</MudText>
+            <MudText Typo="Typo.body2"><b>Prosječan životni vijek:</b> 12 - 18 godina</MudText>
+            <MudText Typo="Typo.body2"><b>Prehrana:</b> Mesojed</MudText>
+            <MudText Typo="Typo.body2"><b>Broj jedinki:</b> 12</MudText>
+
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       Class="mt-3">
+                View Details
+            </MudButton>
+        </MudPaper>
+    </MudItem>
+
+
+
+    <MudItem xs="12" sm="6" md="3">
+        <MudPaper Class="pa-4" Elevation="2" Style="height: 400px;">
+            <MudImage Src="images/rabbit.jpg"
+                      Alt="Rabbits"
+                      Width="250"
+                      Class="mb-2" />
+
+            <MudText Typo="Typo.h6">Rabbits</MudText>
+            <MudText Typo="Typo.body2"><b>Latinski naziv:</b> Oryctolagus cuniculus</MudText>
+            <MudText Typo="Typo.body2"><b>Opis:</b> Mirne i umiljate životinje koje zahtijevaju pažljivu njegu.</MudText>
+            <MudText Typo="Typo.body2"><b>Prosječan životni vijek:</b> 8 - 12 godina</MudText>
+            <MudText Typo="Typo.body2"><b>Prehrana:</b> Biljojed</MudText>
+            <MudText Typo="Typo.body2"><b>Broj jedinki:</b> 7</MudText>
+
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       Class="mt-3">
+                View Details
+            </MudButton>
+        </MudPaper>
+    </MudItem>
+
+
+    <MudItem xs="12" sm="6" md="3">
+        <MudPaper Class="pa-4" Elevation="2" Style="height: 400px;">
+            <MudImage Src="images/bird.jpg"
+                      Alt="Birds"
+                      Width="250"
+                      Class="mb-2" />
+
+            <MudText Typo="Typo.h6">Birds</MudText>
+            <MudText Typo="Typo.body2"><b>Latinski naziv:</b> Aves</MudText>
+            <MudText Typo="Typo.body2"><b>Opis:</b> Raznolika skupina ptica kojima je potreban siguran smještaj.</MudText>
+            <MudText Typo="Typo.body2"><b>Prosječan životni vijek:</b> 5 - 20 godina</MudText>
+            <MudText Typo="Typo.body2"><b>Prehrana:</b> Svežder</MudText>
+            <MudText Typo="Typo.body2"><b>Broj jedinki:</b> 9</MudText>
+
+            <MudButton Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       Class="mt-3">
+                View Details
+            </MudButton>
+        </MudPaper>
+    </MudItem>
+
+
+
+    
+</MudGrid>
 
