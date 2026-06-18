@@ -1,4 +1,6 @@
 ﻿@page "/animals"
+@rendermode InteractiveServer
+@using AzilEdu.Shared.Models
 
 <MudText Typo="Typo.h3" GutterBottom="true">Animals</MudText>
 <MudText Typo="Typo.body1">
@@ -77,3 +79,154 @@
         </MudPaper>
     </MudItem>
 </MudGrid>
+
+<hr />
+<hr />
+
+
+<MudTable Items="@animals" Hover="true" Striped="true" Bordered="true" Dense="true">
+    <HeaderContent>
+        <MudTh>Slika</MudTh>
+        <MudTh>Ime</MudTh>
+        <MudTh>Vrsta</MudTh>
+        <MudTh>Pasmina</MudTh>
+        <MudTh>Spol</MudTh>
+        <MudTh>Starost</MudTh>
+        <MudTh>Datum dolaska</MudTh>
+        <MudTh>Status</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Slika">
+            <MudAvatar Size="Size.Large">
+                <MudImage Src="@context.ImageUrl" Alt="@context.Name" />
+            </MudAvatar>
+        </MudTd>
+        <MudTd DataLabel="Ime">@context.Name</MudTd>
+        <MudTd DataLabel="Vrsta">@context.Species</MudTd>
+        <MudTd DataLabel="Pasmina">@context.Breed</MudTd>
+        <MudTd DataLabel="Spol">@context.Gender</MudTd>
+        <MudTd DataLabel="Starost">@GetAgeText(context)</MudTd>
+        <MudTd DataLabel="Datum dolaska">@GetArrivalDateText(context)</MudTd>
+        <MudChip T="string"
+                 Color="@(context.IsAdopted ? Color.Success : Color.Warning)"
+                 Variant="Variant.Filled">
+            @GetAdoptionStatusText(context)
+        </MudChip>
+    </RowTemplate>
+</MudTable>
+
+
+
+@code {
+
+    private string GetAgeText(Animal animal)
+    {
+        if (animal.Age.HasValue)
+        {
+            return $"{animal.Age.Value} god.";
+        }
+        else
+        {
+            return "Nepoznato";
+        }
+    }
+
+    private string GetArrivalDateText(Animal animal)
+    {
+        if (animal.ArrivalDate.HasValue)
+        {
+            return animal.ArrivalDate.Value.ToShortDateString();
+        }
+        else
+        {
+            return "Nije uneseno";
+        }
+    }
+
+    private string GetAdoptionStatusText(Animal animal)
+    {
+        return animal.IsAdopted ? "Udomljena" : "U azilu";
+    }
+
+    private List<Animal> animals = new()
+    {
+        new Animal
+        {
+            Id = 1,
+            Name = "Luna",
+            Species = "Pas",
+            Breed = "Labrador",
+            Gender = "Ženka",
+            Age = 3,
+            ArrivalDate = new DateTime(2025, 10, 12),
+            IsAdopted = false,
+            ImageUrl = "/images/animals/luna.webp",
+            Description = "Mirna i druželjubiva kujica koja voli šetnje."
+        },
+        new Animal
+        {
+            Id = 2,
+            Name = "Maza",
+            Species = "Mačka",
+            Breed = "Domaća kratkodlaka",
+            Gender = "Ženka",
+            Age = 2,
+            ArrivalDate = new DateTime(2025, 11, 5),
+            IsAdopted = true,
+            ImageUrl = "/images/animals/maza.webp",
+            Description = "Zaigrana mačka naviknuta na boravak u zatvorenom prostoru."
+        },
+        new Animal
+        {
+            Id = 3,
+            Name = "Rex",
+            Species = "Pas",
+            Breed = "Njemački ovčar",
+            Gender = "Mužjak",
+            Age = 5,
+            ArrivalDate = new DateTime(2026, 1, 20),
+            IsAdopted = false,
+            ImageUrl = "/images/animals/rex.webp",
+            Description = "Aktivan pas koji traži iskusnijeg vlasnika."
+        },
+        new Animal
+        {
+            Id = 4,
+            Name = "Nala",
+            Species = "Mačka",
+            Breed = "Maine Coon mješanac",
+            Gender = "Ženka",
+            Age = null,
+            ArrivalDate = new DateTime(2026, 2, 3),
+            IsAdopted = false,
+            ImageUrl = "/images/animals/nala.webp",
+            Description = "Mlada mačka pronađena bez poznate povijesti."
+        },
+        new Animal
+        {
+            Id = 5,
+            Name = "Tobi",
+            Species = "Pas",
+            Breed = "Mješanac",
+            Gender = "Mužjak",
+            Age = 1,
+            ArrivalDate = null,
+            IsAdopted = false,
+            ImageUrl = "/images/animals/tobi.webp",
+            Description = "Vesel pas kojem datum dolaska još nije potvrđen."
+        },
+        new Animal
+        {
+            Id = 6,
+            Name = "Bruno",
+            Species = "Pas",
+            Breed = "Bigl",
+            Gender = "Mužjak",
+            Age = 4,
+            ArrivalDate = new DateTime(2025, 9, 18),
+            IsAdopted = true,
+            ImageUrl = "/images/animals/bruno.webp",
+            Description = "Udomljen pas koji ostaje u evidenciji azila."
+        }
+    };
+}
